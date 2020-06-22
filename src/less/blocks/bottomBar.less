@@ -1,0 +1,300 @@
+.audoClick{
+    display: none;
+}
+
+.bottomBar{
+    margin-top: 300px;
+}
+
+.bottomBar__inner {
+    display: flex;
+
+    height: 100px;
+    background: url("../images/bottomBar/bg.png") center no-repeat;
+    background-size: contain;
+}
+
+.bottomBar__about {
+    margin: 29px 0 0 65px;
+}
+
+.bottomBar__bet{
+    display: flex;
+    align-items: center;
+
+    margin: 30px 0 0 5px;
+
+    width: 199px;
+    height: 54px;
+    background: url("../images/bottomBar/bg_bet.png") center no-repeat;
+    background-size: contain;
+}
+
+.bottomBar__minus {
+    margin-left: 6px;
+}
+
+.bottomBar__display {
+    text-align: center;
+
+    font-family: 'Noto Sans SC', sans-serif;
+
+    margin: 0 0 0 9px;
+    text-transform: uppercase;
+
+    text-shadow: 0 2px 0px #4e0005;
+
+    &-title {
+        font-size: 13px;
+        color: #ff6972;
+    }
+
+    &-total {
+        font-size: 18px;
+        color: #ffd100;
+    }
+}
+
+.bottomBar__plus {
+    margin-left: 10px;
+}
+
+.bottomBar__luck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 13px 0 0 0;
+
+    &-coin {
+        width: 104px;
+        height: 54px;
+        margin-left: 3px;
+
+        background: url("../images/bottomBar/coin_bg.png") center no-repeat;
+        background-size: contain;
+
+        text-align: center;
+        font-family: 'Noto Sans SC', sans-serif;
+        text-transform: uppercase;
+
+        text-shadow: 0 2px 0px #4e0005;
+
+        &-title {
+            margin-top: 4px;
+            font-size: 13px;
+            color: #ff6972;
+        }
+    
+        &-total {
+            font-size: 18px;
+            color: #ffd100;
+        }
+    }
+
+    &-win {
+        width: 428px;
+        height: 93px;
+        margin-left: -2px;
+        background: url("../images/bottomBar/win_bg.png") center no-repeat;
+        background-size: contain;
+
+        text-align: center;
+        font-family: 'Noto Sans SC', sans-serif;
+        text-transform: uppercase;
+
+        text-shadow: 0 2px 0px #4e0005;
+
+        &-title {
+            margin-top: 4px;
+            font-size: 50px;
+            color: #ffe400;
+        }
+    }
+
+    &-turbo {
+        width: 84px;
+        height: 53px;
+        margin-left: -1px;
+    }
+
+    &-turbo.off {
+        background: url("../images/bottomBar/win_off.png") center no-repeat;
+        background-size: contain;
+    }
+
+    &-turbo.on {
+        background: url("../images/bottomBar/win_on.png") center no-repeat;
+        background-size: contain;
+    }
+}
+
+input[type=checkbox] {
+    display:none;
+}
+
+input[type=checkbox] + label {
+    text-align: center;
+    font-family: 'Noto Sans SC', sans-serif;
+    text-transform: uppercase;
+    color: #3d0000;
+    font-size: 15px;
+
+    display:inline-block;
+    margin: 22px 0 0 5px;
+    background:url("../images/bottomBar/win_standard.png") no-repeat;
+    height: 28px;
+    width: 73px;
+    background-size: cover;
+}
+
+.turbo__label {
+    margin-top: 2px;
+}
+
+input[type=checkbox]:checked + label {
+    background:url("../images/bottomBar/win_standard.png") no-repeat;
+    margin: 4px 0 0 5px;
+    height: 28px;
+    width: 73px;
+    display:inline-block;
+    background-size: cover;
+}
+
+.bottomBar__start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    margin: 13px 0 0 0;
+
+    &-auto {
+        z-index: 999;
+        position: absolute;
+        left: 6px;
+        width: 200px;
+        height: 56px;
+
+        background: url("../images/bottomBar/start_bar_standard.png") center no-repeat;
+        background-size: contain;
+
+        p{
+            font-family: 'Noto Sans SC', sans-serif;
+            text-transform: uppercase;
+            color: #3d0000;
+            text-shadow: 0 1px 0px #ffc600;
+            font-size: 18px;
+            margin: 13px 0 0 35px;
+        }
+    }
+
+    &-auto:hover {
+        background: url("../images/bottomBar/start_bar_light.png") center no-repeat;
+        background-size: contain;
+    }
+
+    &-test{
+        position: absolute;
+        left: 6px;
+        top:20px;
+        z-index: 997;
+        > ul{
+            position: absolute;
+            width: 194px;
+        }
+         
+        > ul > li{
+            list-style: none;
+            display: inline-block;
+            position:relative;
+            padding:0;
+        }
+         
+        a{
+            text-decoration:none;
+        }
+         
+        li ul{
+            z-index: 997;
+            width: 194px;
+            position: absolute;
+            list-style:none;
+            bottom:70%;
+            font-size:15px;
+            left:6px;
+            margin: 40px 0 0 -40px;
+            padding: 0px;
+        
+            background: url("../images/bottomBar/start_list_bg.png") no-repeat;
+            background-size: cover;
+         
+            max-height:0px;
+            overflow:hidden;
+            transition:max-height 1s linear;
+        }
+
+        li ul li {
+            padding: 0 0 0 13px;
+        }
+         
+        li ul li a{
+            font-family: 'Noto Sans SC', sans-serif;
+            text-transform: uppercase;
+            color:#ffd100;
+            text-shadow: 0 1px 0px #710008;
+            display:block;
+        }
+
+        li ul li a:hover{
+            color:#fff;
+        }
+
+        li ul li:last-child{
+            padding-bottom: 28px;
+        }
+         
+        li ul li:first-child{
+            display: flex;
+            align-items: center;
+            margin-top:10px;
+            position:relative;
+        }
+    }
+
+    &-logo{
+        padding-right: 5px;
+    }
+
+    &-button {
+        position: absolute;
+        left: 200px;
+        z-index: 1000;
+        border-radius: 50%;
+        margin-left: -88px;
+        box-shadow: 0 3px 2px black;
+    }
+}
+
+.rotate-arrows{
+    animation-name: rotation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+}
+
+@keyframes rotation {
+    0% {
+        transform:rotate(0deg);
+    }
+
+    20% {
+        transform:rotate(-360deg);
+    }
+
+    100% {
+        transform:rotate(-360deg);
+    }
+}

@@ -1,0 +1,84 @@
+.btn {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+
+    transition: background .2s linear;
+
+    &--info {
+        width: 56px;
+        height: 56px;
+
+        background: url(../images/bottomBar/info_standard.png) center no-repeat;
+        background-size: contain;
+        
+        &:active{
+            background: url(../images/bottomBar/info_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &:focus {
+            outline: none;
+            background: url(../images/bottomBar/info_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &:hover {
+            background: url(../images/bottomBar/info_light.png) center no-repeat;
+            background-size: contain;
+        }
+    }
+
+    &--sound {
+        width: 43px;
+        height: 43px;
+
+        background: url(../images/bottomBar/bet_standard.png) center no-repeat;
+        background-size: contain;
+        
+        &:active{
+            background: url(../images/bottomBar/bet_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &:focus {
+            outline: none;
+            background: url(../images/bottomBar/bet_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &:hover {
+            background: url(../images/bottomBar/bet_light.png) center no-repeat;
+            background-size: contain;
+        }
+    }
+
+    &--start {
+        width: 171px;
+        height: 171px;
+
+        background: url(../images/bottomBar/start_button_standard.png) center no-repeat;
+        background-size: contain;
+        
+        &:active{
+            background: url(../images/bottomBar/start_button_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &:focus {
+            outline: none;
+            background: url(../images/bottomBar/start_button_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &:hover {
+            background: url(../images/bottomBar/start_button_light.png) center no-repeat;
+            background-size: contain;
+        }
+    }
+
+    
+}
