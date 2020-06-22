@@ -1,5 +1,5 @@
 /// <reference path="../../typings/globals/jquery/index.d.ts" />
-$(function () {
+$(document).ready(function () {
 
     $("#auto_list").hover(function () {
         $("#bottomBar__start-list").css({
@@ -47,190 +47,175 @@ $(function () {
         fPlay();
     });
 
-    const worksSlider = $('[data-slider="slick"]');
+    var betCounter = $('.bottomBar__display-total');
+    var betValue = parseFloat(betCounter.text().slice(1));
+    var coinCounter = $('.bottomBar__luck-coin-total');
+    var coinValue = parseFloat(coinCounter.text().slice(1));
 
-    /* Works filter
-    =========================== */
+    function lessBet(betLess, coinLess){
+        betValue = betValue - betLess;
+        betValue = Math.round((betValue)*100)/100;
+        betCounter.text('¥'+betValue);
 
-    var filter = $("[data-filter]");
+        coinValue = coinValue - coinLess;
+        coinValue = Math.round((coinValue)*100)/100;
+        coinCounter.text('¥'+coinValue);
+    }
 
-    filter.on("click", function (event) {
-        event.preventDefault();
-        $(".portfolio").fadeTo(50, 0.10);
+    function moreBet(betMore, coinMore){
+        betValue = betValue + betMore;
+        betValue = Math.round((betValue)*100)/100;
+        betCounter.text('¥'+betValue);
 
-        var category = $(this).data("filter");
+        coinValue = coinValue + coinMore;
+        coinValue = Math.round((coinValue)*100)/100;
+        coinCounter.text('¥'+coinValue);
+    }
 
-        if (category == "all") {
-            $("[data-category]").removeClass("hide");
+    $('.bottomBar__minus').click(function(){
+        if(betValue==300){
+            lessBet(150,10);
+            $('.btn--plus').prop('disabled', false);
         }
-        else {
-            $("[data-category]").each(function () {
-
-                if ($(this).hasClass(category)) {
-                    $(this).removeClass("hide");
+        else{
+            if(betValue==150){
+                lessBet(30,2);
+            }
+            else{
+                if(betValue==120){
+                    lessBet(45,3);
                 }
-                else {
-                    $(this).addClass("hide");
+                else{
+                    if(betValue==75){
+                        lessBet(30,2);
+                    }
+                    else{
+                        if ((betValue<=45)&&(betValue>15)){
+                            lessBet(15,1);
+                        }
+                        else{
+                            if(betValue==15){
+                                lessBet(3,0.2);
+                            }
+                            else{
+                                if(betValue==12){
+                                    lessBet(4.5,0.3);
+                                }
+                                else{
+                                    if(betValue==7.5){
+                                        lessBet(3,0.2);
+                                    }
+                                    else{
+                                        if ((betValue<=4.5)&&(betValue>1.5)){
+                                            lessBet(1.5,0.1);
+                                        }
+                                        else{
+                                            if(betValue==1.5){
+                                                lessBet(0.3,0.02);
+                                            }
+                                            else{
+                                                if (betValue==1.2){
+                                                    lessBet(0.45,0.03);
+                                                }
+                                                else{
+                                                    if (betValue==0.75){
+                                                        lessBet(0.3,0.02);
+                                                    }
+                                                    else{
+                                                        if ((betValue<=0.45)&&(betValue>0.15)){
+                                                            lessBet(0.15,0.01);
+
+                                                            if(betValue==0.15){
+                                                                    $('.btn--minus').prop('disabled', true);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-
-                // if (workCategory != category) {
-                //     $(this).addClass("hide");
-                // }
-                // else {
-                //     $(this).removeClass("hide");
-                // }
-            });
-        }
-        $(".portfolio").fadeTo(50, 1);
-    });
-
-    /* Modals
-    =========================== */
-
-    const modalCall = $("[data-modal]");
-    const modalClose = $("[data-close]");
-
-    modalCall.on("click", function (event) {
-        event.preventDefault();
-        var $this = $(this);
-        var modalId = $this.data("modal");
-
-        $(modalId).addClass('show');
-        $("body").addClass("no-scroll");
-
-        setTimeout(function () {
-            $(modalId).find(".modal__dialog").css({
-                transform: "rotateX(0)"
-            });
-        }, 200);
-
-        worksSlider.slick("setPosition");
-    });
-
-    modalClose.on("click", function (event) {
-        event.preventDefault();
-        var $this = $(this);
-        var modalParent = $this.parents(".modal");
-
-        modalParent.find(".modal__dialog").css({
-            transform: "rotateX(90deg)"
-        });
-
-        setTimeout(function () {
-            modalParent.removeClass('show');
-            $("body").removeClass("no-scroll");
-        }, 200);
-    });
-
-    $(".modal").on("click", function () {
-        var $this = $(this);
-
-        $this.find(".modal__dialog").css({
-            transform: "rotateX(90deg)"
-        });
-
-        setTimeout(function () {
-            $this.removeClass('show');
-            $("body").removeClass("no-scroll");
-        }, 200);
-    });
-
-    $(".modal__dialog").on("click", function (event) {
-        event.stopPropagation();
-    });
-
-    /* Slider https://kenwheeler.github.io/slick/
-    =========================== */
-
-    worksSlider.slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        fade: true,
-        arrows: false,
-        dots: true,
-    });
-
-    $(".slickPrev").on("click", function (event) {
-        event.preventDefault();
-
-        var currentSlider = $(this).parents(".modal").find('[data-slider="slick"]');
-
-        currentSlider.slick("slickPrev");
-    });
-
-    $(".slickNext").on("click", function (event) {
-        event.preventDefault();
-
-        var currentSlider = $(this).parents(".modal").find('[data-slider="slick"]');
-
-        currentSlider.slick("slickNext");
-    });
-
-    /* Fixed header
-    =========================== */
-
-    var header = $("#header"),
-        intro = $("#intro"),
-        introHeight = intro.innerHeight()-20,
-        scrollPosition = $(window).scrollTop();
-
-        checkScroll(scrollPosition, introHeight);
-    
-        $(window).on("scroll resize", function() {
-            introHeight = intro.innerHeight()-20;
-            scrollPosition = $(this).scrollTop();
-    
-            checkScroll(scrollPosition, introHeight);
-        });
-    
-        function checkScroll(scrollPosition, introHeight) {
-            if (scrollPosition > introHeight) {
-                header.addClass("fixed");
-            } else {
-                header.removeClass("fixed");
             }
         }
-
-    /* Scroll
-    =========================== */
-
-    $("[data-scroll]").on("click", function (event) {
-        event.preventDefault();
-
-        var $this = $(this),
-            blockId = $this.data('scroll'),
-            blockOffset = $(blockId).offset().top-header.innerHeight();
-
-        $("#nav a").removeClass("active");
-        $this.addClass("active");
-
-        $("html, body").animate({
-            scrollTop: blockOffset
-        }, 700)
-
-        $("#burger").removeClass("active");
-        $("#nav").removeClass("active");
     });
 
-    /* Mobile nav
-    =========================== */
+    $('.bottomBar__plus').click(function(){
+        if((betValue>=0.15)&&(betValue<0.45)){
+            moreBet(0.15, 0.01);
 
-    $("#burger").on("click", function (event) {
-        event.preventDefault();
+            $('.btn--minus').prop('disabled', false);
+        }
+        else{
+            if(betValue==0.45){
+                moreBet(0.30, 0.02);
+            }
+            else{
+                if(betValue==0.75){
+                    moreBet(0.45, 0.03);
+                }
+                else{
+                    if(betValue==1.2){
+                        moreBet(0.30, 0.02);
+                    }
+                    else{
+                        if((betValue>=1.5)&&(betValue<4.5)){
+                            moreBet(1.5, 0.1);
+                        }
+                        else{
+                            if(betValue==4.5){
+                                moreBet(3, 0.2);
+                            }
+                            else{
+                                if(betValue==7.5){
+                                    moreBet(4.5, 0.3);
+                                }
+                                else{
+                                    if(betValue==12){
+                                        moreBet(3, 0.2);
+                                    }
+                                    else{
+                                        if((betValue>=15)&&(betValue<45)){
+                                            moreBet(15, 1);
+                                        }
+                                        else{
+                                            if(betValue==45){
+                                                moreBet(30, 2);
+                                            }
+                                            else{
+                                                if(betValue==75){
+                                                    moreBet(45, 3);
+                                                }
+                                                else{
+                                                    if(betValue==120){
+                                                        moreBet(30, 2);
+                                                    }
+                                                    else{
+                                                        if(betValue==150){
+                                                            moreBet(150, 10);
 
-        $(this).toggleClass('active');
-        $("#nav").toggleClass("active");
+                                                            if(betValue==300){
+                                                                $('.btn--plus').prop('disabled', true);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
     });
 
-    /* Collapse
-    =========================== */
-
-    $("[data-collapse]").on("click", function(event){
-        event.preventDefault();
-        var $this = $(this);
-
-        $this.parent(".accordion__item").toggleClass("active");
-    });
 
 });

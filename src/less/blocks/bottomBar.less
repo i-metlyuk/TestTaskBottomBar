@@ -21,6 +21,7 @@
 .bottomBar__bet{
     display: flex;
     align-items: center;
+    position: relative;
 
     margin: 30px 0 0 5px;
 
@@ -31,10 +32,14 @@
 }
 
 .bottomBar__minus {
+    position: absolute;
+    left: 0;
     margin-left: 6px;
 }
 
 .bottomBar__display {
+    position: absolute;
+    left: 55px;
     text-align: center;
 
     font-family: 'Noto Sans SC', sans-serif;
@@ -56,7 +61,9 @@
 }
 
 .bottomBar__plus {
-    margin-left: 10px;
+    position: absolute;
+    right: 0;
+    margin-right: 6px;
 }
 
 .bottomBar__luck {
