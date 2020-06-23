@@ -136,11 +136,7 @@
     }
 }
 
-input[type=checkbox] {
-    display:none;
-}
-
-input[type=checkbox] + label {
+.turbo__label {
     text-align: center;
     font-family: 'Noto Sans SC', sans-serif;
     text-transform: uppercase;
@@ -153,19 +149,52 @@ input[type=checkbox] + label {
     height: 28px;
     width: 73px;
     background-size: cover;
+
+    cursor: pointer;
+
+    p {
+        margin-top: 2px;
+    }
+    &-light {
+        background: url(../images/bottomBar/win_light.png) center no-repeat;
+        background-size: contain;
+    }
+
+    &-dark{
+        background: url(../images/bottomBar/win_dark.png) center no-repeat;
+        background-size: contain;
+    }
+
+    &-disable{
+        pointer-events:none;
+    }
 }
 
-.turbo__label {
-    margin-top: 2px;
-}
+.bottomBar__turbo {
+    display:none;
 
-input[type=checkbox]:checked + label {
-    background:url("../images/bottomBar/win_standard.png") no-repeat;
-    margin: 4px 0 0 5px;
-    height: 28px;
-    width: 73px;
-    display:inline-block;
-    background-size: cover;
+    &:checked + .turbo__label {
+        background:url("../images/bottomBar/win_standard.png") no-repeat;
+        margin: 4px 0 0 5px;
+        height: 28px;
+        width: 73px;
+        display:inline-block;
+        background-size: cover;
+
+        &-light {
+            background: url(../images/bottomBar/win_light.png) center no-repeat;
+            background-size: contain;
+        }
+    
+        &-dark{
+            background: url(../images/bottomBar/win_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &-disable{
+            pointer-events:none;
+        }
+    }
 }
 
 .bottomBar__start {
@@ -181,28 +210,16 @@ input[type=checkbox]:checked + label {
         z-index: 999;
         position: absolute;
         left: 6px;
+
         width: 200px;
         height: 56px;
 
         background: url("../images/bottomBar/start_bar_standard.png") center no-repeat;
         background-size: contain;
 
-        p{
-            font-family: 'Noto Sans SC', sans-serif;
-            text-transform: uppercase;
-            color: #3d0000;
-            text-shadow: 0 1px 0px #ffc600;
-            font-size: 18px;
-            margin: 13px 0 0 35px;
-        }
     }
 
-    &-auto:hover {
-        background: url("../images/bottomBar/start_bar_light.png") center no-repeat;
-        background-size: contain;
-    }
-
-    &-test{
+    &-list{
         position: absolute;
         left: 6px;
         top:20px;
@@ -281,6 +298,22 @@ input[type=checkbox]:checked + label {
         border-radius: 50%;
         margin-left: -88px;
         box-shadow: 0 3px 2px black;
+    }
+}
+
+.bottomBar__start-effect{
+    position: absolute;
+    left: 200px;
+    width: 147px;
+    height: 147px;
+    margin-left: -76px;
+    border-radius: 50%;
+    background-color: gray;
+    z-index: 999;
+
+    &-opacity{
+        opacity: 0.4;
+        z-index: 1000;
     }
 }
 

@@ -1,30 +1,110 @@
 /// <reference path="../../typings/globals/jquery/index.d.ts" />
 $(document).ready(function () {
+    
+    //states for info button
+    $(".btn--info").hover(function(){
+        $(this).addClass('btn--info-light');
+    });
+    $(".btn--info").mouseleave(function(){
+        $(this).removeClass('btn--info-light');
+        $(this).removeClass('btn--info-dark');
+    });
+    $(".btn--info").mousedown(function(){
+        $(this).addClass('btn--info-dark');
+    });
+    $(".btn--info").mouseup(function(){
+        $(this).removeClass('btn--info-dark');
+    });
 
-    $("#auto_list").hover(function () {
-        $("#bottomBar__start-list").css({
+    //states for bet buttons
+    $(".btn--bet").hover(function(){
+        $(this).addClass('btn--bet-light');
+    });
+    $(".btn--bet").mouseleave(function(){
+        $(this).removeClass('btn--bet-light');
+        $(this).removeClass('btn--bet-dark');
+    });
+    $(".btn--bet").mousedown(function(){
+        $(this).addClass('btn--bet-dark');
+    });
+    $(".btn--bet").mouseup(function(){
+        $(this).removeClass('btn--bet-dark');
+    });
+
+    //states for turbo checkbox
+    $(".turbo__label").hover(function(){
+        $(this).addClass('turbo__label-light');
+    });
+    $(".turbo__label").mouseleave(function(){
+        $(this).removeClass('turbo__label-light');
+        $(this).removeClass('turbo__label-dark');
+    });
+    $(".turbo__label").mousedown(function(){
+        $(this).addClass('turbo__label-dark');
+    });
+    $(".turbo__label").mouseup(function(){
+        $(this).removeClass('turbo__label-dark');
+    });
+
+    //states for auto button
+    $(".btn--auto").hover(function(){
+        $(this).addClass('btn--auto-light');
+    });
+    $(".btn--auto").mouseleave(function(){
+        $(this).removeClass('btn--auto-light');
+        $(this).removeClass('btn--auto-dark');
+    });
+    $(".btn--auto").mousedown(function(){
+        $(this).addClass('btn--auto-dark');
+    });
+    $(".btn--auto").mouseup(function(){
+        $(this).removeClass('btn--auto-dark');
+    });
+
+    //states for start button
+    $(".btn--start").hover(function(){
+        $(this).addClass('btn--start-light');
+    });
+    $(".btn--start").mouseleave(function(){
+        $(this).removeClass('btn--start-light');
+        $(this).removeClass('btn--start-dark');
+    });
+    $(".btn--start").mousedown(function(){
+        $(this).addClass('btn--start-dark');
+    });
+    $(".btn--start").mouseup(function(){
+        $(this).removeClass('btn--start-dark');
+    });
+
+    $(".btn--auto").hover(function () {
+        $("#bottomBar__start-list-inner").css({
             "max-height":"192px"
         });
     });
 
-    $("#bottomBar__start-list").hover(function () {
+    //auto list appearance
+    $(".btn--auto").hover(function () {
+        $("#bottomBar__start-list-inner").css({
+            "max-height":"192px"
+        });
+    });
+    $(".btn--auto").mouseleave(function () {
+        $("#bottomBar__start-list-inner").css({
+            "max-height":"0px"
+        });
+    });
+    $("#bottomBar__start-list-inner").hover(function () {
         $(this).css({
             "max-height":"192px"
         });
     });
-
-    $("#bottomBar__start-list").mouseleave(function () {
+    $("#bottomBar__start-list-inner").mouseleave(function () {
         $(this).css({
             "max-height":"0px"
         });
     });
 
-    $("#auto_list").mouseleave(function () {
-        $("#bottomBar__start-list").css({
-            "max-height":"0px"
-        });
-    });
-
+    //turbo checkbox background changing
     $('input[type="checkbox"]').click(function(){
         if($(this).prop("checked") == true){
             $(".bottomBar__luck-turbo").removeClass("off");
@@ -36,17 +116,17 @@ $(document).ready(function () {
         }
     });
 
+    //click and sound
     var audioClick = document.getElementById('audioClick');
-
     function fPlay() {
         audioClick.currentTime = 0;
         audioClick.play();
     }
-
     $(".clickAudio").on("click", function (event) {
         fPlay();
     });
 
+    //increasing and decreasing bet
     var betCounter = $('.bottomBar__display-total');
     var betValue = parseFloat(betCounter.text().slice(1));
     var coinCounter = $('.bottomBar__luck-coin-total');
@@ -72,150 +152,153 @@ $(document).ready(function () {
         coinCounter.text('¥'+coinValue);
     }
 
-    $('.bottomBar__minus').click(function(){
+    $('.btn--minus').click(function(){
         if(betValue==300){
             lessBet(150,10);
-            $('.btn--plus').prop('disabled', false);
-        }
-        else{
-            if(betValue==150){
-                lessBet(30,2);
-            }
-            else{
-                if(betValue==120){
-                    lessBet(45,3);
-                }
-                else{
-                    if(betValue==75){
-                        lessBet(30,2);
-                    }
-                    else{
-                        if ((betValue<=45)&&(betValue>15)){
-                            lessBet(15,1);
-                        }
-                        else{
-                            if(betValue==15){
-                                lessBet(3,0.2);
-                            }
-                            else{
-                                if(betValue==12){
-                                    lessBet(4.5,0.3);
-                                }
-                                else{
-                                    if(betValue==7.5){
-                                        lessBet(3,0.2);
-                                    }
-                                    else{
-                                        if ((betValue<=4.5)&&(betValue>1.5)){
-                                            lessBet(1.5,0.1);
-                                        }
-                                        else{
-                                            if(betValue==1.5){
-                                                lessBet(0.3,0.02);
-                                            }
-                                            else{
-                                                if (betValue==1.2){
-                                                    lessBet(0.45,0.03);
-                                                }
-                                                else{
-                                                    if (betValue==0.75){
-                                                        lessBet(0.3,0.02);
-                                                    }
-                                                    else{
-                                                        if ((betValue<=0.45)&&(betValue>0.15)){
-                                                            lessBet(0.15,0.01);
-
-                                                            if(betValue==0.15){
-                                                                    $('.btn--minus').prop('disabled', true);
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            $('.btn--plus').removeClass('disabled');
+            $('.btn--plus').children().removeClass('opacityOn');
+        } else if(betValue==150){
+            lessBet(30,2);
+        } else if(betValue==120){
+            lessBet(45,3);
+        } else if(betValue==75){
+            lessBet(30,2);
+        } else if ((betValue<=45)&&(betValue>15)){
+            lessBet(15,1);
+        } else if(betValue==15){
+            lessBet(3,0.2);
+        } else if(betValue==12){
+            lessBet(4.5,0.3);
+        } else if(betValue==7.5){
+            lessBet(3,0.2);
+        } else if ((betValue<=4.5)&&(betValue>1.5)){
+            lessBet(1.5,0.1);
+        } else if(betValue==1.5){
+            lessBet(0.3,0.02);
+        } else if (betValue==1.2){
+            lessBet(0.45,0.03);
+        } else if (betValue==0.75){
+            lessBet(0.3,0.02);
+        } else if ((betValue<=0.45)&&(betValue>0.15)){
+            lessBet(0.15,0.01);
+            if(betValue==0.15){
+                $('.btn--minus').removeClass('btn--bet-light');
+                $('.btn--minus').addClass('disabled');
+                $('.btn--minus').children().addClass('opacityOn');
             }
         }
     });
 
-    $('.bottomBar__plus').click(function(){
+    $('.btn--plus').click(function(){
         if((betValue>=0.15)&&(betValue<0.45)){
             moreBet(0.15, 0.01);
-
-            $('.btn--minus').prop('disabled', false);
-        }
-        else{
-            if(betValue==0.45){
-                moreBet(0.30, 0.02);
-            }
-            else{
-                if(betValue==0.75){
-                    moreBet(0.45, 0.03);
-                }
-                else{
-                    if(betValue==1.2){
-                        moreBet(0.30, 0.02);
-                    }
-                    else{
-                        if((betValue>=1.5)&&(betValue<4.5)){
-                            moreBet(1.5, 0.1);
-                        }
-                        else{
-                            if(betValue==4.5){
-                                moreBet(3, 0.2);
-                            }
-                            else{
-                                if(betValue==7.5){
-                                    moreBet(4.5, 0.3);
-                                }
-                                else{
-                                    if(betValue==12){
-                                        moreBet(3, 0.2);
-                                    }
-                                    else{
-                                        if((betValue>=15)&&(betValue<45)){
-                                            moreBet(15, 1);
-                                        }
-                                        else{
-                                            if(betValue==45){
-                                                moreBet(30, 2);
-                                            }
-                                            else{
-                                                if(betValue==75){
-                                                    moreBet(45, 3);
-                                                }
-                                                else{
-                                                    if(betValue==120){
-                                                        moreBet(30, 2);
-                                                    }
-                                                    else{
-                                                        if(betValue==150){
-                                                            moreBet(150, 10);
-
-                                                            if(betValue==300){
-                                                                $('.btn--plus').prop('disabled', true);
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    
-                }
+            $('.btn--minus').removeClass('disabled');
+            $('.btn--minus').children().removeClass('opacityOn');
+        } else if(betValue==0.45){
+            moreBet(0.30, 0.02);
+        } else if(betValue==0.75){
+            moreBet(0.45, 0.03);
+        } else if(betValue==1.2){
+            moreBet(0.30, 0.02);
+        } else if((betValue>=1.5)&&(betValue<4.5)){
+            moreBet(1.5, 0.1);
+        } else if(betValue==4.5){
+            moreBet(3, 0.2);
+        } else if(betValue==7.5){
+            moreBet(4.5, 0.3);
+        } else if(betValue==12){
+            moreBet(3, 0.2);
+        } else if((betValue>=15)&&(betValue<45)){
+            moreBet(15, 1);
+        } else if(betValue==45){
+            moreBet(30, 2);
+        } else if(betValue==75){
+            moreBet(45, 3);
+        } else if(betValue==120){
+            moreBet(30, 2);
+        } else if(betValue==150){
+            moreBet(150, 10);
+            if(betValue==300){
+                $('.btn--plus').removeClass('btn--bet-light');
+                $('.btn--plus').addClass('disabled');
+                $('.btn--plus').children().addClass('opacityOn');
             }
         }
-        
     });
 
+    //disable element 
+    function disableElementsOn(){
+        $('.btn--info').children().addClass('opacityOn');
+        $('.btn--info').addClass('disabled');
+        $('.btn--minus').children().addClass('opacityOn');
+        $('.btn--minus').addClass('disabled');
+        $('.btn--plus').children().addClass('opacityOn');
+        $('.btn--plus').addClass('disabled');
+        $('.turbo__label-text').addClass('opacityOn');
+        $('.bottomBar__turbo').addClass('disabled');
+        $('.turbo__label').addClass('disabled');
+        $('.btn--auto').children().addClass('opacityOn');
+        $('.btn--auto').addClass('disabled');
+    }
+
+    function disableElementsOff(){
+        $('.btn--info').children().removeClass('opacityOn');
+        $('.btn--info').removeClass('disabled');
+        if(betValue!=0.15){
+            $('.btn--minus').children().removeClass('opacityOn');
+            $('.btn--minus').removeClass('disabled');
+        }
+        if(betValue!=300){
+            $('.btn--plus').children().removeClass('opacityOn');
+            $('.btn--plus').removeClass('disabled');
+        }
+        $('.turbo__label-text').removeClass('opacityOn');
+        $('.bottomBar__turbo').removeClass('disabled');
+        $('.turbo__label').removeClass('disabled');
+        $('.btn--auto').children().removeClass('opacityOn');
+        $('.btn--auto').removeClass('disabled');
+        $('.btn--start').data('active', 'no');
+    }
+
+    function changeStartButtonLogoToStop() {
+        $('.bottomBar__start-button-logo').prop('src', 'build/images/bottomBar/start_stop_dark.png');
+        $('.bottomBar__start-button-logo').prop('height', '60');
+        $('.bottomBar__start-button-logo').removeClass('rotate-arrows');
+    }
+
+    function changeStartButtonLogoToArrows() {
+        $('.bottomBar__start-button-logo').prop('src', 'build/images/bottomBar/start_arrows_dark.png');
+        $('.bottomBar__start-button-logo').prop('height', '93');
+        $('.bottomBar__start-button-logo').addClass('rotate-arrows');
+    }
+    var timeoutCounterLogo, timeoutCounterElements;
+    $('.btn--start').click(function(){
+        if($('.btn--start').data('active')=='no'){
+            $('.btn--start').data('active', 'yes');
+            $('.btn--start').addClass('disabled');
+            $('.bottomBar__start-effect').addClass('bottomBar__start-effect-opacity');
+            setTimeout(function(){
+                $('.btn--start').removeClass('disabled');
+                $('.bottomBar__start-effect').removeClass('bottomBar__start-effect-opacity');
+            }, 1000);
+            changeStartButtonLogoToStop();
+            timeoutCounterLogo = setTimeout(changeStartButtonLogoToArrows, 3000);
+            
+            disableElementsOn();
+            timeoutCounterElements = setTimeout(disableElementsOff, 3000);
+        } else {
+            clearTimeout(timeoutCounterLogo);
+            clearTimeout(timeoutCounterElements);
+            $('.btn--start').addClass('disabled');
+            $('.bottomBar__start-effect').addClass('bottomBar__start-effect-opacity');
+            setTimeout(function(){
+                $('.btn--start').removeClass('disabled');
+                $('.bottomBar__start-effect').removeClass('bottomBar__start-effect-opacity');
+                changeStartButtonLogoToArrows();
+                disableElementsOff();
+            }, 500);
+            
+        }
+    });
 
 });

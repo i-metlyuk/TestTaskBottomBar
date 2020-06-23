@@ -36,7 +36,7 @@
                 </div>
                 <div class="bottomBar__bet">
                     <div class="bottomBar__minus">
-                        <button class="btn btn--sound btn--minus clickAudio">
+                        <button class="btn btn--bet btn--minus clickAudio">
                             <img src="build/images/bottomBar/bet_minus.png" alt="" height="7px" class="img">
                         </button>
                     </div>
@@ -45,7 +45,7 @@
                         <p class="bottomBar__display-total">¥1.5</p>
                     </div>
                     <div class="bottomBar__plus">
-                        <button class="btn btn--sound btn--plus clickAudio">
+                        <button class="btn btn--bet btn--plus clickAudio">
                             <img src="build/images/bottomBar/bet_plus.png" alt="" width="20px" class="img">
                         </button>
                     </div>
@@ -60,19 +60,21 @@
                     </div>
                     <div class="bottomBar__luck-turbo off">
                         <input type="checkbox" type="checkbox" class="bottomBar__turbo clickAudio" id="turbo" name="turbo" value="yes">
-                        <label for="turbo"><p class="turbo__label">turbo</p></label>
+                        <label class="turbo__label" for="turbo"><p class="turbo__label-text">turbo</p></label>
                     </div>
                 </div>
                 <div class="bottomBar__start">
                     <div id="auto_list" class="bottomBar__start-auto">
-                        <p>auto</p>
+                        <button class="btn btn--auto clickAudio">
+                            <p>auto</p>
+                        </button>
                     </div>
                     <!--<p>auto</p>-->
-                    <div class="bottomBar__start-test">
+                    <div class="bottomBar__start-list">
                         <ul>
                             <li>
                             <a href="#">auto</a>
-                                <ul id="bottomBar__start-list">
+                                <ul id="bottomBar__start-list-inner">
                                     <li><img class="bottomBar__start-logo" src="build/images/bottomBar/start_list_logo.png" alt="" height="16px"><a href="#">until feature</a></li>
                                     <li><a href="#">25 spins</a></li>
                                     <li><a href="#">20 spins</a></li>
@@ -84,9 +86,12 @@
                         </ul>
                     </div>
                     <div class="bottomBar__start-button">
-                        <button class="btn btn--start">
-                            <img class="rotate-arrows" src="build/images/bottomBar/start_arrows_dark.png" alt="" height="93px" class="img">
+                        <button class="btn btn--start clickAudio" data-active="no">
+                            <img class="bottomBar__start-button-logo rotate-arrows" src="build/images/bottomBar/start_arrows_dark.png" alt="" height="93px" class="img">
                         </button>
+                    </div>
+                    <div class="bottomBar__start-effect">
+
                     </div>
                 </div>
             </div>
