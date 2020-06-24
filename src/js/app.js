@@ -61,6 +61,21 @@ $(document).ready(function () {
         $(this).removeClass('btn--auto-dark');
     });
 
+    //states for auto-stop button
+    $(".btn--stop").hover(function(){
+        $(this).addClass('btn--stop-light');
+    });
+    $(".btn--stop").mouseleave(function(){
+        $(this).removeClass('btn--stop-light');
+        $(this).removeClass('btn--stop-dark');
+    });
+    $(".btn--stop").mousedown(function(){
+        $(this).addClass('btn--stop-dark');
+    });
+    $(".btn--stop").mouseup(function(){
+        $(this).removeClass('btn--stop-dark');
+    });
+
     //states for start button
     $(".btn--start").hover(function(){
         $(this).addClass('btn--start-light');
@@ -132,6 +147,7 @@ $(document).ready(function () {
     var coinCounter = $('.bottomBar__luck-coin-total');
     var coinValue = parseFloat(coinCounter.text().slice(1));
 
+    //decreasing bet fuction
     function lessBet(betLess, coinLess){
         betValue = betValue - betLess;
         betValue = Math.round((betValue)*100)/100;
@@ -142,6 +158,7 @@ $(document).ready(function () {
         coinCounter.text('¥'+coinValue);
     }
 
+    //increasing bet fuction
     function moreBet(betMore, coinMore){
         betValue = betValue + betMore;
         betValue = Math.round((betValue)*100)/100;
@@ -152,6 +169,7 @@ $(document).ready(function () {
         coinCounter.text('¥'+coinValue);
     }
 
+    //decreasing by click
     $('.btn--minus').click(function(){
         if(betValue==300){
             lessBet(150,10);
@@ -189,6 +207,7 @@ $(document).ready(function () {
         }
     });
 
+    //increasing bet by click
     $('.btn--plus').click(function(){
         if((betValue>=0.15)&&(betValue<0.45)){
             moreBet(0.15, 0.01);
@@ -226,7 +245,86 @@ $(document).ready(function () {
         }
     });
 
-    //disable element 
+    //start auto spins function
+    function doSpins(){
+        $(".instructions").text("auto play is activated");
+        if(spinsConter!='infinite'){
+            $('.bottomBar__start-auto-counter-text').text(spinsConter);
+            $('.btn--start').addClass('disabled');
+            $('.bottomBar__start-effect').addClass('bottomBar__start-effect-opacity');
+            setTimeout(function(){
+                $('.bottomBar__start-effect').removeClass('bottomBar__start-effect-opacity');
+            }, 1000);
+            changeStartButtonLogoToStop();            
+            disableElementsOn();
+            spinsConter--;
+            if (spinsConter==0){
+                setTimeout(function(){
+                    clearInterval(spinsInterval);
+                    $('.btn--auto').removeClass('hide');
+                    $('.btn--stop').addClass('hide');
+                    $('.bottomBar__start-list').removeClass('hide');
+                    $('.btn--start').removeClass('disabled');
+                    changeStartButtonLogoToArrows();
+                    disableElementsOff();
+                },3000);
+                
+            }
+        }
+        else{                
+            $('.btn--start').addClass('disabled');
+            $('.bottomBar__start-auto-counter-text').addClass('hide');
+            $('.bottomBar__start-auto-counter-logo').removeClass('hide');
+            $('.bottomBar__start-auto-counter-logo').addClass('rotate-stop');
+            $('.bottomBar__start-effect').addClass('bottomBar__start-effect-opacity');
+            setTimeout(function(){
+                $('.bottomBar__start-effect').removeClass('bottomBar__start-effect-opacity');
+            }, 1000);
+            changeStartButtonLogoToStop();            
+            disableElementsOn();
+        }
+    }
+
+    //stop auto spins function
+    function stopSpins(){
+        spinsConter=null;
+        clearInterval(spinsInterval);
+        $('.btn--auto').removeClass('hide');
+        $('.btn--stop').addClass('hide');
+        $('.bottomBar__start-list').removeClass('hide');
+        $('.btn--start').removeClass('disabled');
+        $('.bottomBar__start-auto-counter-text').removeClass('hide');
+        $('.bottomBar__start-auto-counter-logo').addClass('hide');
+        changeStartButtonLogoToArrows();
+        disableElementsOff();
+        $(".instructions").text("click spin to start");
+    }
+
+    //stop auto spins by click
+    $(".btn--stop").click(stopSpins);
+
+    //interval for auto spins
+    function spinsOn(spinsConter){
+        $('.btn--auto').addClass('hide');
+        $('.btn--stop').removeClass('hide');
+        $('.bottomBar__start-list').addClass('hide');
+        
+        doSpins();
+        spinsInterval = setInterval(doSpins,3000);
+    }
+
+    var spins = $("[data-count]");
+    var spinsConter;
+    var spinsInterval;
+
+    //start auto spins by click
+    spins.on("click", function(event){
+        event.preventDefault();
+        spinsConter = $(this).data('count');
+        spinsOn(spinsConter);
+    });
+
+    //disable element on
     function disableElementsOn(){
         $('.btn--info').children().addClass('opacityOn');
         $('.btn--info').addClass('disabled');
@@ -241,6 +339,7 @@ $(document).ready(function () {
         $('.btn--auto').addClass('disabled');
     }
 
+    //disable elements off
     function disableElementsOff(){
         $('.btn--info').children().removeClass('opacityOn');
         $('.btn--info').removeClass('disabled');
@@ -260,18 +359,23 @@ $(document).ready(function () {
         $('.btn--start').data('active', 'no');
     }
 
+    //change arrows to stop on start button
     function changeStartButtonLogoToStop() {
         $('.bottomBar__start-button-logo').prop('src', 'build/images/bottomBar/start_stop_dark.png');
         $('.bottomBar__start-button-logo').prop('height', '60');
         $('.bottomBar__start-button-logo').removeClass('rotate-arrows');
     }
 
+    //change stop to arrows on start button
     function changeStartButtonLogoToArrows() {
         $('.bottomBar__start-button-logo').prop('src', 'build/images/bottomBar/start_arrows_dark.png');
         $('.bottomBar__start-button-logo').prop('height', '93');
         $('.bottomBar__start-button-logo').addClass('rotate-arrows');
     }
+
     var timeoutCounterLogo, timeoutCounterElements;
+
+    //start spin by start button click
     $('.btn--start').click(function(){
         if($('.btn--start').data('active')=='no'){
             $('.btn--start').data('active', 'yes');
