@@ -1,0 +1,406 @@
+.audoClick{
+    display: none;
+}
+
+.bottomBar__header{
+    display: flex;
+    position: absolute;
+    left: 210px;
+    &-text{
+        font-family: 'Noto Sans SC', sans-serif;
+        text-transform: uppercase;
+        color: #ffea00;
+        text-shadow: 0 1px 0px #450005;
+        font-size: 13px;
+        margin: 0 547px 0 0;
+        
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+
+.bottomBar{
+    margin-top: 300px;
+}
+
+.bottomBar__inner {
+    display: flex;
+
+    height: 100px;
+    background: url("../images/bottomBar/bg.png") center no-repeat;
+    background-size: contain;
+}
+
+//.bottomBar__about
+.bottomBar__about {
+    margin: 29px 0 0 65px;
+}
+
+//.bottomBar__bet
+.bottomBar__bet{
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    margin: 30px 0 0 5px;
+
+    width: 199px;
+    height: 54px;
+    background: url("../images/bottomBar/bg_bet.png") center no-repeat;
+    background-size: contain;
+}
+
+.bottomBar__minus {
+    position: absolute;
+    left: 0;
+    margin-left: 6px;
+}
+
+.bottomBar__display {
+    position: absolute;
+    left: 55px;
+    text-align: center;
+
+    font-family: 'Noto Sans SC', sans-serif;
+
+    margin: 0 0 0 9px;
+    text-transform: uppercase;
+
+    text-shadow: 0 2px 0px #4e0005;
+
+    &-title {
+        font-size: 13px;
+        color: #ff6972;
+    }
+
+    &-total {
+        font-size: 18px;
+        color: #ffd100;
+    }
+}
+
+.bottomBar__plus {
+    position: absolute;
+    right: 0;
+    margin-right: 6px;
+}
+
+//.bottomBar__luck
+.bottomBar__luck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 13px 0 0 0;
+
+    &-coin {
+        width: 104px;
+        height: 54px;
+        margin-left: 3px;
+
+        background: url("../images/bottomBar/coin_bg.png") center no-repeat;
+        background-size: contain;
+
+        text-align: center;
+        font-family: 'Noto Sans SC', sans-serif;
+        text-transform: uppercase;
+
+        text-shadow: 0 2px 0px #4e0005;
+
+        &-title {
+            margin-top: 4px;
+            font-size: 13px;
+            color: #ff6972;
+        }
+    
+        &-total {
+            font-size: 18px;
+            color: #ffd100;
+        }
+    }
+
+    &-win {
+        width: 428px;
+        height: 93px;
+        margin-left: -2px;
+        background: url("../images/bottomBar/win_bg.png") center no-repeat;
+        background-size: contain;
+
+        text-align: center;
+        font-family: 'Noto Sans SC', sans-serif;
+        text-transform: uppercase;
+
+        text-shadow: 0 2px 0px #4e0005;
+
+        &-title {
+            margin-top: 4px;
+            font-size: 50px;
+            color: #ffe400;
+        }
+    }
+
+    &-turbo {
+        width: 84px;
+        height: 53px;
+        margin-left: -1px;
+    }
+
+    &-turbo.off {
+        background: url("../images/bottomBar/win_off.png") center no-repeat;
+        background-size: contain;
+    }
+
+    &-turbo.on {
+        background: url("../images/bottomBar/win_on.png") center no-repeat;
+        background-size: contain;
+    }
+}
+
+.turbo__label {
+    text-align: center;
+    font-family: 'Noto Sans SC', sans-serif;
+    text-transform: uppercase;
+    color: #3d0000;
+    font-size: 15px;
+
+    display:inline-block;
+    margin: 22px 0 0 5px;
+    background:url("../images/bottomBar/win_standard.png") no-repeat;
+    height: 28px;
+    width: 73px;
+    background-size: cover;
+
+    cursor: pointer;
+
+    p {
+        margin-top: 2px;
+    }
+    &-light {
+        background: url(../images/bottomBar/win_light.png) center no-repeat;
+        background-size: contain;
+    }
+
+    &-dark{
+        background: url(../images/bottomBar/win_dark.png) center no-repeat;
+        background-size: contain;
+    }
+
+    &-disable{
+        pointer-events:none;
+    }
+}
+
+.bottomBar__turbo {
+    display:none;
+
+    &:checked + .turbo__label {
+        background:url("../images/bottomBar/win_standard.png") no-repeat;
+        margin: 4px 0 0 5px;
+        height: 28px;
+        width: 73px;
+        display:inline-block;
+        background-size: cover;
+
+        &-light {
+            background: url(../images/bottomBar/win_light.png) center no-repeat;
+            background-size: contain;
+        }
+    
+        &-dark{
+            background: url(../images/bottomBar/win_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &-disable{
+            pointer-events:none;
+        }
+    }
+}
+
+//.bottomBar__start
+.bottomBar__start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    margin: 13px 0 0 0;
+
+    &-auto {
+        z-index: 999;
+        position: absolute;
+        left: 6px;
+
+        width: 200px;
+        height: 56px;
+
+        background: url("../images/bottomBar/start_bar_standard.png") center no-repeat;
+        background-size: contain;
+
+        &-counter{
+            width: 40px;
+            height: 40px;
+
+            background: url("../images/bottomBar/start_auto_counter_bg.png") center no-repeat;
+            background-size: contain;
+
+            margin: 2px 0 0 10px;
+
+            &-text{
+                font-family: 'Noto Sans SC', sans-serif;
+                text-transform: uppercase;
+                color: #ffbd00;
+                text-shadow: 0 1px 0px #10002c;
+                font-size: 19.8px;
+                margin: 4px 0 0 0;
+            }
+
+            &-logo{
+                margin: 9px 0 0 1px;
+            }
+        }
+
+    }
+
+    &-list{
+        position: absolute;
+        left: 6px;
+        top:20px;
+        z-index: 997;
+        > ul{
+            position: absolute;
+            width: 194px;
+        }
+         
+        > ul > li{
+            list-style: none;
+            display: inline-block;
+            position:relative;
+            padding:0;
+        }
+         
+        a{
+            text-decoration:none;
+        }
+         
+        li ul{
+            z-index: 997;
+            width: 194px;
+            position: absolute;
+            list-style:none;
+            bottom:70%;
+            font-size:15px;
+            left:6px;
+            margin: 40px 0 0 -40px;
+            padding: 0px;
+        
+            background: url("../images/bottomBar/start_list_bg.png") no-repeat;
+            background-size: cover;
+         
+            max-height:0px;
+            overflow:hidden;
+            transition:max-height 1s linear;
+        }
+
+        li ul li {
+            padding: 0 0 0 13px;
+        }
+         
+        li ul li a{
+            font-family: 'Noto Sans SC', sans-serif;
+            text-transform: uppercase;
+            color:#ffd100;
+            text-shadow: 0 1px 0px #710008;
+            display:block;
+        }
+
+        li ul li a:hover{
+            color:#fff;
+        }
+
+        li ul li:last-child{
+            padding-bottom: 28px;
+        }
+         
+        li ul li:first-child{
+            display: flex;
+            align-items: center;
+            margin-top:10px;
+            position:relative;
+        }
+    }
+
+    &-logo{
+        padding-right: 5px;
+    }
+
+    &-button {
+        position: absolute;
+        left: 112px;
+        z-index: 1000;
+        border-radius: 50%;
+        box-shadow: 0 3px 2px black;
+    }
+}
+
+.bottomBar__start-effect{
+    position: absolute;
+    left: 126px;
+    width: 143px;
+    height: 143px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #fffdd6, #ffdf5f, #f6ab16);
+    box-shadow: 0 0 5px #fff;
+    z-index: 999;
+
+    &-opacity{
+        opacity: 0.7;
+        z-index: 1000;
+    }
+}
+
+.rotate-arrows{
+    animation-name: rotation-arrows;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 1s;
+}
+
+@keyframes rotation-arrows {
+    0% {
+        transform:rotate(0deg);
+    }
+
+    20% {
+        transform:rotate(-360deg);
+    }
+
+    100% {
+        transform:rotate(-360deg);
+    }
+}
+
+.rotate-stop{
+    animation-name: rotation-stop;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+}
+
+@keyframes rotation-stop {
+    0% {
+        transform:rotate(0deg);
+    }
+
+    33.3% {
+        transform:rotate(-360deg);
+    }
+
+    100% {
+        transform:rotate(-360deg);
+    }
+}

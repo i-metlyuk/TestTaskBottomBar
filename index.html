@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="build/css/style.css">
+
+    <meta name="description" content="Experimental «skip-stop» station">
+    <meta name="Keywords" content="skip-stop">
+    <meta name="google" content="notranslate">
+
+    <title>Test Task «Bottom bar»</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://cdn.sobekrepository.org/includes/jquery-rotate/2.2/jquery-rotate.min.js"></script>
+    
+</head>
+
+<body>
+    <audio id="audioClick">
+        <source src="build/sounds/Button_Click.wav" type="audio/wav">
+      </audio>
+
+    <div class="bottomBar">
+        <div class="container">
+            <div class="bottomBar__header">
+                <p class="bottomBar__header-text">Line 31 wins GBP2</p>
+                <p class="bottomBar__header-text instructions">Click spin to start</p>
+            </div>
+            <div class="bottomBar__inner">
+                <!-- .bottomBar__about -->
+                    <div class="bottomBar__about">
+                        <button class="btn btn--info clickAudio">
+                            <img src="build/images/bottomBar/info_symbol.png" alt="" height="33px" class="img">
+                        </button>
+                    </div>
+                <!-- /.bottomBar__about -->
+                <!-- .bottomBar__bet -->   
+                    <div class="bottomBar__bet">
+                        <div class="bottomBar__minus">
+                            <button class="btn btn--bet btn--minus clickAudio">
+                                <img src="build/images/bottomBar/bet_minus.png" alt="" height="7px" class="img">
+                            </button>
+                        </div>
+                        <div class="bottomBar__display">
+                            <p class="bottomBar__display-title">total bet</p>
+                            <p class="bottomBar__display-total">¥1.5</p>
+                        </div>
+                        <div class="bottomBar__plus">
+                            <button class="btn btn--bet btn--plus clickAudio">
+                                <img src="build/images/bottomBar/bet_plus.png" alt="" width="20px" class="img">
+                            </button>
+                        </div>
+                    </div>
+                <!-- /.bottomBar__bet -->
+                <!-- .bottomBar__luck -->
+                    <div class="bottomBar__luck">
+                        <div class="bottomBar__luck-coin">
+                            <p class="bottomBar__luck-coin-title">coin</p>
+                            <p class="bottomBar__luck-coin-total">¥0.10</p>
+                        </div>
+                        <div class="bottomBar__luck-win">
+                            <p class="bottomBar__luck-win-title">goood luck!</p>
+                        </div>
+                        <div class="bottomBar__luck-turbo off">
+                            <input type="checkbox" type="checkbox" class="bottomBar__turbo clickAudio" id="turbo" name="turbo" value="yes">
+                            <label class="turbo__label" for="turbo"><p class="turbo__label-text">turbo</p></label>
+                        </div>
+                    </div>
+                <!-- /.bottomBar__luck -->
+                <!-- .bottomBar__start -->
+                    <div class="bottomBar__start">
+                        <div id="auto_list" class="bottomBar__start-auto">
+                            <button class="btn btn--auto clickAudio">
+                                <p>auto</p>
+                            </button>
+                            <button class="btn btn--stop hide clickAudio">
+                                <div class="bottomBar__start-auto-counter">
+                                    <p class="bottomBar__start-auto-counter-text"></p>
+                                    <img class="bottomBar__start-auto-counter-logo hide" src="build/images/bottomBar/start_auto_counter_logo.png" alt="" height="24px">
+                                </div>
+                                <p class="btn--stop-text">stop</p>
+                            </button>
+                        </div>
+                        <div class="bottomBar__start-list">
+                            <ul>
+                                <li>
+                                <a href="#">auto</a>
+                                    <ul id="bottomBar__start-list-inner">
+                                        <li><img class="bottomBar__start-logo" src="build/images/bottomBar/start_list_logo.png" alt="" height="16px"><a href="#" class="bottomBar__start-spins clickAudio" data-count="infinite">until feature</a></li>
+                                        <li><a href="#" class="bottomBar__start-spins clickAudio" data-count="25">25 spins</a></li>
+                                        <li><a href="#" class="bottomBar__start-spins clickAudio" data-count="20">20 spins</a></li>
+                                        <li><a href="#" class="bottomBar__start-spins clickAudio" data-count="15">15 spins</a></li>
+                                        <li><a href="#" class="bottomBar__start-spins clickAudio" data-count="10">10 spins</a></li>
+                                        <li><a href="#" class="bottomBar__start-spins clickAudio" data-count="5">5 spins</a></li>
+                                    </ul>
+                                </li>                    
+                            </ul>
+                        </div>
+                        <div class="bottomBar__start-button">
+                            <button class="btn btn--start clickAudio" data-active="no">
+                                <img class="bottomBar__start-button-logo rotate-arrows" src="build/images/bottomBar/start_arrows_dark.png" alt="" height="93px" class="img">
+                            </button>
+                        </div>
+                        <div class="bottomBar__start-effect">
+
+                        </div>
+                    </div>
+                <!-- /bottomBar__start -->
+            </div>
+        </container>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="build/js/app.js"></script>
+
+</body>
+
+</html>

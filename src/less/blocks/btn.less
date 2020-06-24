@@ -1,0 +1,146 @@
+.btn {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+
+    transition: background .2s linear;
+
+    &--info {
+        width: 56px;
+        height: 56px;
+
+        background: url(../images/bottomBar/info_standard.png) center no-repeat;
+        background-size: contain;
+
+        &:focus {
+            outline: none;
+        }
+
+        &-light {
+            background: url(../images/bottomBar/info_light.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &-dark{
+            background: url(../images/bottomBar/info_dark.png) center no-repeat;
+            background-size: contain;
+        }
+    }
+
+    &--bet {
+        width: 43px;
+        height: 43px;
+
+        background: url(../images/bottomBar/bet_standard.png) center no-repeat;
+        background-size: contain;
+
+        &:focus {
+            outline: none;
+        }
+
+        &-light {
+            background: url(../images/bottomBar/bet_light.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &-dark{
+            background: url(../images/bottomBar/bet_dark.png) center no-repeat;
+            background-size: contain;
+        }
+    }
+
+    &--auto {
+        width: 200px;
+        height: 56px;
+
+        background: url("../images/bottomBar/start_bar_standard.png") center no-repeat;
+        background-size: contain;
+
+        text-align: left;
+
+        &:focus {
+            outline: none;
+            
+        }
+
+        &-light {
+            background: url(../images/bottomBar/start_bar_light.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &-dark{
+            background: url(../images/bottomBar/start_bar_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        p{
+            font-family: 'Noto Sans SC', sans-serif;
+            text-transform: uppercase;
+            color: #3d0000;
+            text-shadow: 0 1px 0px #ffc600;
+            font-size: 18px;
+            margin: 0 0 0 35px;
+        }
+    }
+
+    &--stop{
+        display: flex;
+        align-items: center;
+
+        width: 200px;
+        height: 56px;
+
+        background: url("../images/bottomBar/start_bar_standard.png") center no-repeat;
+        background-size: contain;
+
+        &:focus {
+            outline: none;
+        }
+
+        &-light {
+            background: url(../images/bottomBar/start_bar_light.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &-dark{
+            background: url(../images/bottomBar/start_bar_dark.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &-text{
+            font-family: 'Noto Sans SC', sans-serif;
+            text-transform: uppercase;
+            color: #3d0000;
+            text-shadow: 0 1px 0px #ffc600;
+            font-size: 18px;
+            margin: 0 0 0 5px;
+        }
+    }
+
+    &--start {
+        width: 171px;
+        height: 171px;
+
+        background: url(../images/bottomBar/start_button_standard.png) center no-repeat;
+        background-size: contain;
+
+        &:focus {
+            outline: none;
+        }
+
+        &-light {
+            background: url(../images/bottomBar/start_button_light.png) center no-repeat;
+            background-size: contain;
+        }
+
+        &-dark{
+            background: url(../images/bottomBar/start_button_dark.png) center no-repeat;
+            background-size: contain;
+        }
+    }
+
+    
+}
