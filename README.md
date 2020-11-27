@@ -1,6 +1,6 @@
 # TestTaskBottomBar
-The test task for Skywing group
+The test task for Skywind group company
 
-Test task description and psd - https://dropmefiles.com/I34r0
+Html, less, jquery, gulp
 
-The link to "Bottom bar" component - https://i-metlyuk.github.io/TestTaskBottomBar/
+The link to final page - https://i-metlyuk.github.io/TestTaskBottomBar/
